@@ -1,150 +1,214 @@
 .page {
-  --background: #fafafa;
-  --foreground: #fff;
-
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 48px 16px 32px;
 }
 
-.main {
-  display: flex;
-  flex: 1;
-  width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
+.header {
+  text-align: center;
+  margin-bottom: 32px;
 }
 
-.intro {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
+.header h1 {
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  letter-spacing: -0.02em;
 }
 
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
+.kicker {
+  color: var(--accent);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 8px;
+}
+
+/* Relógio */
+.relogio {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px 20px;
+  text-align: center;
+  box-shadow: 0 0 60px var(--glow);
+}
+
+.horaAtual {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: clamp(2.4rem, 9vw, 4.5rem);
   font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
+  color: var(--accent);
+  text-shadow: 0 0 18px var(--glow);
+  font-variant-numeric: tabular-nums;
 }
 
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
+.horaAtual span {
+  display: block;
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--muted);
+  text-shadow: none;
+  margin-top: 4px;
 }
 
-.intro a {
+.tituloContador {
+  margin: 28px 0 16px;
+  font-size: 1.1rem;
   font-weight: 500;
-  color: var(--text-primary);
+  color: var(--muted);
 }
 
-.ctas {
-  display: flex;
-  flex-direction: row;
+.digitos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.digito {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 4px;
+}
+
+.numero {
+  display: block;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: clamp(1.8rem, 7vw, 3.2rem);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.rotulo {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.dataFim {
+  margin-top: 18px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Timeline */
+.timelineSecao {
+  margin-top: 64px;
+}
+
+.timelineSecao > h2 {
+  text-align: center;
+  margin-bottom: 32px;
+  font-size: 1.6rem;
+}
+
+.timeline {
+  list-style: none;
+  position: relative;
+  padding-left: 56px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 21px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(var(--accent), var(--border));
+}
+
+.item {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+.marcador {
+  position: absolute;
+  left: -56px;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 720px) {
+  .card {
+    grid-template-columns: 280px 1fr;
+  }
+}
+
+.foto {
   width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
 }
 
-.ctas a {
+.cardCorpo {
+  padding: 20px;
+}
+
+.periodo {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.resumo {
+  margin: 6px 0 14px;
+  color: var(--muted);
+}
+
+.trabalhos {
+  list-style: none;
+  display: grid;
+  gap: 14px;
+}
+
+.trabalhos h3 {
+  font-size: 1rem;
+}
+
+.trabalhos p {
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.tags {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
+.tags span {
+  font-size: 0.75rem;
+  padding: 2px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
-}
-
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
-}
-
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
-  }
-
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
-
-  .page {
-    --background: #000;
-    --foreground: #000;
-
-    --text-primary: #ededed;
-    --text-secondary: #999;
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
-  }
-}
-
-.code {
-  font-family: var(--font-geist-mono);
-  font-size: 0.9em;
-  background: color-mix(in srgb, currentColor 8%, transparent);
-  padding: 0.1em 0.4em;
-  border-radius: 6px;
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 48px;
 }
